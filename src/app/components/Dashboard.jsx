@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import TaskList from "./TaskList";
 
-export const Dashboard = ({groups, tasks}) => (
+export const Dashboard = ({groups}) => (
     <div>
         <h2>Dashboard</h2>
         <ul>
@@ -13,8 +13,7 @@ export const Dashboard = ({groups, tasks}) => (
 
 const mapStateToProps = (state) => {
     return {
-        groups: state.groups,
-        tasks: state.tasks
+        groups: state.groups
     }
 };
 

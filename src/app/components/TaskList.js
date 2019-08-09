@@ -1,9 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const TaskList = ({tasks, group}) => (
-    <ul>
-        {tasks.map(t => (t.group === group.id && <li key={t.id}>{t.name}</li>))}
-    </ul>
+const TaskList = ({tasks, id, name}) => (
+    <div>
+        {name}
+        <ul>
+            {tasks.map(t => <li key={t.id}>{t.name}</li>)}
+        </ul>
+    </div>
 );
 
-export default TaskList;
+const mapStateToProps = (state, ownProps) => {
+    const group = ownProps.id;
+  return {
+      tasks: state.tasks.filter(t => t.group === group)
+  }
+};
+
+export default connect(mapStateToProps)(TaskList);
